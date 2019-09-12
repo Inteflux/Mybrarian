@@ -9,6 +9,7 @@ const bodyParser = require("body-parser")
 // importing our routers
 const indexRouter = require("./routes/index")
 const authorRouter = require("./routes/authors")
+const bookRouter = require("./routes/books")
 
 // view engine adn seting ejs as the view engine
 app.set("view engine", "ejs")
@@ -30,6 +31,8 @@ db.on("error", error => console.error(error))
 app.use("/", indexRouter)
 // using the author router so every route in this router will start with /authors/
 app.use("/authors", authorRouter)
+// book router
+app.use("/books", bookRouter)
 
 // our server using env variable or defaultign to 3000
 app.listen(process.env.PORT || 3000)
