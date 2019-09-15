@@ -5,6 +5,8 @@ const express = require("express")
 const app = express()
 const expressLayouts = require("express-ejs-layouts")
 const bodyParser = require("body-parser")
+// for our put and delete req
+const methodOverride = require("method-override")
 
 // importing our routers
 const indexRouter = require("./routes/index")
@@ -21,6 +23,8 @@ app.use(expressLayouts)
 // where our public files will be
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({limit: "10mb", extended: false}))
+// put and get req package
+app.use(methodOverride("_method"))
 
 // importing mongoose for our db
 const mongoose = require("mongoose")
